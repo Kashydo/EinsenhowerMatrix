@@ -1,44 +1,28 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
 
 namespace Codecool.EinsenhowerMatrix
 {
-    /// <summary>
-    /// Top level class for Matrix
-    /// </summary>
+    
     public class TodoMatrix
     {
-        /// <summary>
-        /// Gets or sets dictionary with quarters
-        /// </summary>
+        
         public Dictionary<string, TodoQuarter> Quarters { get; set; }
 
         TodoItem ActiveItem = null;
         public string ActiveQuarterKey = "IU";
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TodoMatrix"/> class.
-        /// </summary>
+       
         public TodoMatrix()
         {
-            Quarters = new Dictionary<string, TodoQuarter>
-            {
-                { "IU", new TodoQuarter()},
-                { "IN", new TodoQuarter()},
-                { "NU", new TodoQuarter()},
-                { "NN", new TodoQuarter()}
-            };
+           CreateQuarters();
         }
 
-        /// <summary>
-        /// Creates new item based on given parameters
-        /// </summary>
-        /// <param name="title">title for new task</param>
-        /// <param name="date">deadline for new task</param>
-        /// <param name="isImportant">boolean value that indicates whenever task is important or not</param>
+        
         public void AddItem(string title, DateTime date, bool isImportant = false)
         {
             if (!ThereIsDeadlineAlready(date))
@@ -77,9 +61,6 @@ namespace Codecool.EinsenhowerMatrix
             return false;
         }
 
-        /// <summary>
-        /// Deletes all items that are marked as done
-        /// </summary>
         public void ArchiveItems()
         {
             foreach (string key in Quarters.Keys)
@@ -88,10 +69,7 @@ namespace Codecool.EinsenhowerMatrix
             }
         }
 
-        /// <summary>
-        /// Reads the content from given file, creates and add item to given quarter
-        /// </summary>
-        /// <param name="filePath">string with path leading to source file</param>
+        
         public void AddItemsFromFile(string filePath)
         {
             try
@@ -211,11 +189,19 @@ namespace Codecool.EinsenhowerMatrix
 
         private DateTime ConvertToDateFrom(string representation)
         {
-            throw new NotImplementedException();
+            return DateTime.ParseExact(representation, "yyyy-MM-dd", CultureInfo.InvariantCulture);
         }
 
         private void CreateQuarters()
         {
+            Quarters = new Dictionary<string, TodoQuarter>
+            {
+                { "IU", new TodoQuarter()},
+                { "IN", new TodoQuarter()},
+                { "NU", new TodoQuarter()},
+                { "NN", new TodoQuarter()}
+            };
+
         }
     }
 }

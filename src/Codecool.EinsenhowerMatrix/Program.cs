@@ -4,9 +4,7 @@ using System.Text;
 
 namespace Codecool.EinsenhowerMatrix
 {
-    /// <summary>
-    /// Entry point for app
-    /// </summary>
+  
     public class Program
     {
         /// <summary>

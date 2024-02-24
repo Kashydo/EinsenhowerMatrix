@@ -97,6 +97,26 @@ namespace Codecool.EinsenhowerMatrix.Tests
 
         }
 
+        [Test]
+
+        public void TestPastDeadlinr()
+        {
+            TodoQuarter quarter = new TodoQuarter();
+            quarter.AddItem("Test Task", DateTime.Now.AddDays(-1));
+
+            // Assert
+            Assert.IsEmpty(quarter.Items);
+        }
+        [Test]
+        public void TestEmptyTitle()
+        {
+            TodoQuarter quarter = new TodoQuarter();
+            quarter.AddItem("", DateTime.Now.AddDays(5));
+
+            // Assert
+            Assert.IsEmpty(quarter.Items);
+        }
+
 
     }
 }

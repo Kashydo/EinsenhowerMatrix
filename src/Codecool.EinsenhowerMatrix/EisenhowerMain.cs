@@ -3,14 +3,10 @@
 
 namespace Codecool.EinsenhowerMatrix
 {
-    /// <summary>
-    /// Main class for program
-    /// </summary>
+    
     public class EisenhowerMain
     {
-        /// <summary>
-        /// Runs program with basic user UI
-        /// </summary>
+       
         public void Run()
         {
             bool run = true;
@@ -39,12 +35,12 @@ namespace Codecool.EinsenhowerMatrix
                         break;
 
                     case "3":
-                        // Wyświetl macierz
+                       
                         Console.WriteLine(matrix.ToString());
                         break;
 
                     case "0":
-                        // Zakończ program
+                        
                         Environment.Exit(0);
                         break;
 

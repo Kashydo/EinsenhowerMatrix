@@ -33,7 +33,7 @@ namespace Codecool.EinsenhowerMatrix
         {
             if (deadline >= DateTime.Now )
             {
-                if (title != null)
+                if (title != null && title !="")
                 {
                     Items.Add(new TodoItem(title, deadline));
                 }
