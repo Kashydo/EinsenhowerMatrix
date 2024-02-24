@@ -34,6 +34,10 @@ namespace Codecool.EinsenhowerMatrix
         /// <param name="deadline">deadline for title</param>
         public TodoItem(string title, DateTime deadline)
         {
+            Title = title;
+            Deadline = deadline;
+            IsDone = false;
+            IsImportant = false;
         }
 
         /// <summary>
@@ -45,6 +49,8 @@ namespace Codecool.EinsenhowerMatrix
         public TodoItem(string title, DateTime deadline, bool isImportant)
             : this(title, deadline)
         {
+            IsImportant=isImportant;
+            IsDone = false;
         }
 
         /// <summary>
@@ -52,6 +58,7 @@ namespace Codecool.EinsenhowerMatrix
         /// </summary>
         public void Mark()
         {
+            IsDone = true;
         }
 
         /// <summary>
@@ -59,6 +66,7 @@ namespace Codecool.EinsenhowerMatrix
         /// </summary>
         public void UnMark()
         {
+            IsDone = false;
         }
 
         /// <summary>
@@ -67,7 +75,10 @@ namespace Codecool.EinsenhowerMatrix
         /// <returns>string containing instance values</returns>
         public override string ToString()
         {
-            throw new NotImplementedException();
+            string title = Title;
+            string deadline = Deadline.ToString("dd-MM");
+            string mark = IsDone ? "[X]" : "[ ]";
+            return $"{mark} {deadline} {title}";
         }
     }
 }
