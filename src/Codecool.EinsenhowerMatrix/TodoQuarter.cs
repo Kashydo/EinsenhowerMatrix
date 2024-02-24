@@ -5,30 +5,20 @@ using System.Text;
 
 namespace Codecool.EinsenhowerMatrix
 {
-    /// <summary>
-    /// Class that represents quarter for items from different categories
-    /// </summary>
+   
     public class TodoQuarter
     {
-        /// <summary>
-        /// Gets or sets list of items
-        /// </summary>
+        
         public List<TodoItem> Items;
         public int ActiveTaskIndex = 0;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TodoQuarter"/> class.
-        /// </summary>
+       
         public TodoQuarter()
         {
             Items = new List<TodoItem>();
         }
 
-        /// <summary>
-        /// Add item to list
-        /// </summary>
-        /// <param name="title">title of item</param>
-        /// <param name="deadline">deadline of item</param>
+      
         public void AddItem(string title, DateTime deadline)
         {
             if (deadline >= DateTime.Now )
@@ -55,21 +45,13 @@ namespace Codecool.EinsenhowerMatrix
             return false;
         }
 
-            /// <summary>
-            /// Add item to list
-            /// </summary>
-            /// <param name="title">title of item</param>
-            /// <param name="deadline">deadline of item</param>
-            /// <param name="isImportant">boolean that indicates whenever item is important or not</param>
-            public void AddItem(string title, DateTime deadline, bool isImportant)
+           
+        public void AddItem(string title, DateTime deadline, bool isImportant)
         {
             Items.Add(new TodoItem(title, deadline,isImportant));
         }
 
-        /// <summary>
-        /// Removes item instance under given index
-        /// </summary>
-        /// <param name="index">index of </param>
+       
         public void RemoveItem(int index)
         {
             try
@@ -84,9 +66,7 @@ namespace Codecool.EinsenhowerMatrix
             }
         }
 
-        /// <summary>
-        /// Destroys all done item
-        /// </summary>
+       
         public void ArchiveItems()
         {
             for (int i = 0; i< Items.Count - 1;  i++)
@@ -107,7 +87,7 @@ namespace Codecool.EinsenhowerMatrix
             {
                 ActiveTaskIndex = Items.Count() - 1;
             }
-            //   ActiveTaskIndex = ActiveTaskIndex > 0 ? ActiveTaskIndex-1 : TodoItems.Count() - 1;
+        
         }
 
         public void GoDownTaskList()
@@ -119,10 +99,7 @@ namespace Codecool.EinsenhowerMatrix
             else ActiveTaskIndex = 0;
         }
 
-        /// <summary>
-        /// Returns human readable representation of quarter
-        /// </summary>
-        /// <returns>string with all nested items</returns>
+       
         public override string ToString()
         {
             StringBuilder stringBuilder = new StringBuilder();

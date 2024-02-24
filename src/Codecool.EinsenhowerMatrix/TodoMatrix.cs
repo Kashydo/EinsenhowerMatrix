@@ -91,10 +91,7 @@ namespace Codecool.EinsenhowerMatrix
             }
         }
 
-        /// <summary>
-        /// Saves current matrix content to file
-        /// </summary>
-        /// <param name="filePath">file path under all task will be saved</param>
+       
         public void SaveItemsToFile(string filePath)
         {
             List<string> linesToSave = new List<string>();
@@ -109,10 +106,7 @@ namespace Codecool.EinsenhowerMatrix
             System.IO.File.WriteAllLines(filePath, linesToSave);
         }
 
-        /// <summary>
-        /// Returns human readable representation for matrix
-        /// </summary>
-        /// <returns>string with all quarters and associated items</returns>
+      
         public override string ToString()
         {
             
