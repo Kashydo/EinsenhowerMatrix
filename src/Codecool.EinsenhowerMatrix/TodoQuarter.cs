@@ -77,7 +77,10 @@ namespace Codecool.EinsenhowerMatrix
                 Items.RemoveAt(index);
             }catch (IndexOutOfRangeException ex)
             {
-                Console.WriteLine($"Nie ma takiego indeksu. {ex}");
+                Console.WriteLine($"Index poza zakresem. {ex.Message}");
+            }catch(ArgumentOutOfRangeException ex)
+            {
+                Console.WriteLine($"argument poza zakresem. {ex.Message}");
             }
         }
 

@@ -17,7 +17,7 @@ namespace Codecool.EinsenhowerMatrix
         public Dictionary<string, TodoQuarter> Quarters { get; set; }
 
         TodoItem ActiveItem = null;
-        private string ActiveQuarterKey = "IU";
+        public string ActiveQuarterKey = "IU";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TodoMatrix"/> class.
