@@ -52,6 +52,11 @@ namespace Codecool.EinsenhowerMatrix
             IsImportant=isImportant;
             IsDone = false;
         }
+        public TodoItem(string title, DateTime deadline, bool isImportant, bool isDone): this(title, deadline,isImportant) { 
+
+            IsDone=isDone;
+        }
+
 
         /// <summary>
         /// Marks item as done

@@ -29,16 +29,33 @@ namespace Codecool.EinsenhowerMatrix
         /// <param name="deadline">deadline of item</param>
         public void AddItem(string title, DateTime deadline)
         {
-            Items.Add(new TodoItem(title, deadline));
+            if (deadline >= DateTime.Now)
+            {
+                Items.Add(new TodoItem(title, deadline));
+            }
+            else
+            {
+                Console.WriteLine("Niemo¿na dodataæ taska z przesz³¹ dat¹");
+            }
         }
 
-        /// <summary>
-        /// Add item to list
-        /// </summary>
-        /// <param name="title">title of item</param>
-        /// <param name="deadline">deadline of item</param>
-        /// <param name="isImportant">boolean that indicates whenever item is important or not</param>
-        public void AddItem(string title, DateTime deadline, bool isImportant)
+        public bool ThereIsTaskWithThisDeadline(DateTime date)
+        {
+            foreach (TodoItem item in Items)
+            {
+                if (item.Deadline == date)
+                    return true;
+            }
+            return false;
+        }
+
+            /// <summary>
+            /// Add item to list
+            /// </summary>
+            /// <param name="title">title of item</param>
+            /// <param name="deadline">deadline of item</param>
+            /// <param name="isImportant">boolean that indicates whenever item is important or not</param>
+            public void AddItem(string title, DateTime deadline, bool isImportant)
         {
             Items.Add(new TodoItem(title, deadline,isImportant));
         }
