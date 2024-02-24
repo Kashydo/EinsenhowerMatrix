@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace Codecool.EinsenhowerMatrix
@@ -14,6 +15,9 @@ namespace Codecool.EinsenhowerMatrix
         /// Gets or sets dictionary with quarters
         /// </summary>
         public Dictionary<string, TodoQuarter> Quarters { get; set; }
+
+        TodoItem ActiveItem = null;
+        private string ActiveQuarterKey = "IU";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TodoMatrix"/> class.
@@ -53,6 +57,8 @@ namespace Codecool.EinsenhowerMatrix
                 }
                 TodoQuarter quarter = Quarters[status];
                 quarter.AddItem(title, date, isImportant);
+                ActiveQuarterKey = status; 
+                ActiveItem = ActiveItem = quarter.Items.LastOrDefault();
             }
             else
             {
@@ -201,7 +207,7 @@ namespace Codecool.EinsenhowerMatrix
 
             return matrixBuilder.ToString();
         }
-    
+       
 
         private DateTime ConvertToDateFrom(string representation)
         {

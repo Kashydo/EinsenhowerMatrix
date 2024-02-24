@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Codecool.EinsenhowerMatrix
@@ -13,6 +14,7 @@ namespace Codecool.EinsenhowerMatrix
         /// Gets or sets list of items
         /// </summary>
         public List<TodoItem> Items;
+        public int ActiveTaskIndex = 0;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TodoQuarter"/> class.
@@ -29,9 +31,13 @@ namespace Codecool.EinsenhowerMatrix
         /// <param name="deadline">deadline of item</param>
         public void AddItem(string title, DateTime deadline)
         {
-            if (deadline >= DateTime.Now)
+            if (deadline >= DateTime.Now )
             {
-                Items.Add(new TodoItem(title, deadline));
+                if (title != null)
+                {
+                    Items.Add(new TodoItem(title, deadline));
+                }
+                else Console.WriteLine("Niemo¿na dodataæ taska bez tytu³u");
             }
             else
             {
@@ -66,7 +72,13 @@ namespace Codecool.EinsenhowerMatrix
         /// <param name="index">index of </param>
         public void RemoveItem(int index)
         {
-            Items.RemoveAt(index);
+            try
+            {
+                Items.RemoveAt(index);
+            }catch (IndexOutOfRangeException ex)
+            {
+                Console.WriteLine($"Nie ma takiego indeksu. {ex}");
+            }
         }
 
         /// <summary>
@@ -74,13 +86,34 @@ namespace Codecool.EinsenhowerMatrix
         /// </summary>
         public void ArchiveItems()
         {
-            for (int i = Items.Count - 1; i >= 0; i--)
+            for (int i = 0; i< Items.Count - 1;  i++)
             {
                 if (Items[i].IsDone)
                 {
                     RemoveItem(i);
                 }
             }
+        }
+        public void GoUpTaskList()
+        {
+            if (ActiveTaskIndex > 0)
+            {
+                ActiveTaskIndex--;
+            }
+            else
+            {
+                ActiveTaskIndex = Items.Count() - 1;
+            }
+            //   ActiveTaskIndex = ActiveTaskIndex > 0 ? ActiveTaskIndex-1 : TodoItems.Count() - 1;
+        }
+
+        public void GoDownTaskList()
+        {
+            if (ActiveTaskIndex < Items.Count() - 1)
+            {
+                ActiveTaskIndex++;
+            }
+            else ActiveTaskIndex = 0;
         }
 
         /// <summary>
